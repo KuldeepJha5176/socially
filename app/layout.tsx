@@ -1,3 +1,5 @@
+// app/layout.tsx
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -27,7 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
+      {/* KEEP <html> tag minimal */}
       <html lang="en">
+        {/* Put theme/fonts etc on <body>, not <html> */}
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -40,10 +44,11 @@ export default function RootLayout({
             <div className="min-h-screen">
               <Navbar />
               <main className="py-8">
-                {/* Container to center the content  */}
                 <div className="max-w-7xl mx-auto px-4">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <div className="hidden lg:block lg:col-span-3">sidebar</div>
+                    <div className="hidden lg:block lg:col-span-3">
+                      sidebar
+                    </div>
                     <div className="lg:col-span-9">{children}</div>
                   </div>
                 </div>
